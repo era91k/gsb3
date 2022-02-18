@@ -24,6 +24,10 @@ class Moncontroleur extends CI_Controller {
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
 		$connexion = $this->visiteur->seConnect($login, $mdp);
+		if ($connexion) {
+			$visiteur = $this->visiteur->getVisiteurByLogin($login);
+			var_dump($visiteur);
+		}
 		var_dump($connexion);
 	}
 	

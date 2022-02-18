@@ -12,10 +12,6 @@ class Visiteur extends CI_Model {
     private $cp;
     private $ville;
 
-    public function __construct() {
-        parent::construct();
-    }
-
     function getId(){
         return $this->id;
     }
