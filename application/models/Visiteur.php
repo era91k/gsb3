@@ -101,9 +101,13 @@ class Visiteur extends CI_Model {
 
     function connectUser($login, $mdp){
         $visiteur = $this->getVisiteurByLogin($login);
-        if (($visiteur != NULL) && password_verify($mdp, $visiteur->mdp)) {
-            echo 'lol';
+        $mdpHash = sha1($mdp);
+        if (($visiteur != NULL) && ($visiteur->mdp == $mdpHash)) {
+            $visiteurVerifie = $visiteur;
+        } else {
+            $visiteurVerifie = null;
         }
+        return $visiteurVerifie;
     }
 
 

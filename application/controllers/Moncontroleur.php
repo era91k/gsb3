@@ -23,12 +23,12 @@ class Moncontroleur extends CI_Controller {
 		$this->load->model('visiteur');
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
-		$connexion = $this->visiteur->seConnect($login, $mdp);
-		if ($connexion) {
-			$visiteur = $this->visiteur->getVisiteurByLogin($login);
+		$visiteur = $this->visiteur->connectUser($login, $mdp);
+		if ($visiteur != null) {
 			var_dump($visiteur);
+		} else {
+			echo 'connexion échouée';
 		}
-		var_dump($connexion);
 	}
 	
 }
